@@ -1,13 +1,31 @@
 <!doctype html>
-<html lang="en">
+<html>
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vite App</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+        <style type="text/tailwindcss">      
+        @theme {
+        --color-clifford: #da373d;      
+        }    
+        </style>
   </head>
-  <body>
-    <div id="app"></div>
-    <script type="module" src="/src/main.js"></script>
+  <!--  TODO: Set bg color to white for body-->
+  <body class="bg-orange-200">
+    <header class="bg-stone-900">
+        <h1 class="text-red-50 text-5xl">The Movie Database</h1>
+    </header>   
+    
+    <nav class="bg-stone-600 text-red-50">
+        <p class="">Nav test testing even more</p>
+    </nav>
+
+    <main class="bg-amber-200">
+        <p class="text-red-50">This is the main</p>
+    </main>
+
+    <footer class="bg-stone-600">
+        <p class="text-red-50">Detta är footern. Skriver till lite.</p>
+    </footer>
   </body>
 </html>
