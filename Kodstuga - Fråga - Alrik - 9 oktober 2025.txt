@@ -2,11 +2,15 @@ Fråga till Kodstugan torsdag 9.oktober för:
 Restcountries
 1. Är felhantering korrekt nu?
 2. Är det ok att jag har publicerat projektet på egen hemsida?
+https://grit.jenschrchristensen.com/restcountries/
 
 The Movie DataBase projektet:
 1. Kan jag använda CDN länk för Tailwind CSS, eller måste detta installeras på annat sätt. 
 OK till CDN länk
-2. Kan jag publicera projektet på egen hemsida?
+2. Kan jag publicera projektet på egen hemsida? 
+https://grit.jenschrchristensen.com/moviedatabase/
+
+Database?
 
 JS 2 Social Media projektet
 1. Ok att lösa med MySQL databas?
