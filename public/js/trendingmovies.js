@@ -30,7 +30,8 @@ function createMovieCard (media) {
 
     movieCard.innerHTML = `
     // Image url: https://developer.themoviedb.org/docs/image-basics 
-    <img src="${backdrop_path}" class="movie_image">
+    // Byta vanilla css classes mot tailwind css classes
+    <img src="INSERT-IMAGE-URL${backdrop_path}" class="movie_image">
     <div class="title"> ${title} </div>
     <div class="title"> ${release_date} </div>    
    `;

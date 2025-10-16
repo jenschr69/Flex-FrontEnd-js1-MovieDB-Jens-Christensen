@@ -11,20 +11,42 @@
   <link rel="manifest" href="https://grit.jenschrchristensen.com/img/site.webmanifest">
   <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
   <style type="text/tailwindcss">
+    #trendingMovies {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
 
+    .movies{
+      padding: 0.5rem 0rem 1rem 1rem;
+      margin: 1px auto;
+      gap: 20px;
+    }
+
+    .trending_movies {
+
+    }
+
+    .movie_image{
+        width: 300px;
+        height: 200px;
+    }
+
+    .title {
+      font-size: 1rem;
+      color: black
+    }
   </style>
-  <!-- <link rel="stylesheet" href="/../css/styles.css"> -->
-  <!-- <link rel="stylesheet" href="../css/trending-styles.css"> -->
   <script src="../js/trendingmovies.js" defer></script>
 </head>
 <body>
   <div class="container mx-auto">
 
-  <header class="bg-red-500 rounded-lg text-white text-3xl p-3">
+  <header class="bg-stone-950 rounded-lg text-white text-3xl p-3 mb-2">
    <h1><a href="../">The Movie Database - Trending Movies</a></h1>
   </header> 
   
-  <nav class="bg-stone-950 rounded-lg text-white font-medium text-xl">
+  <nav class="bg-stone-950 rounded-lg text-white font-medium text-xl p-3 mb-2">
     <ul>
       <li><a href="../actors/">Actors</a></li>
       <li><a href="../movies/">Movies</a></li>
@@ -33,17 +55,16 @@
     </ul>
   </nav>
   
-  <main>
+  <main class="mb-2">
     <h1>Trending Movies</h1>
     <section id="trendingMovies">
 
     </section>
-
   </main>
-  <footer class="bg-stone-950 rounded-lg text-white">
+
+  <footer class="bg-stone-950 rounded-lg text-white p-3 mb-2">
     <p>&copy; Flex Frontend JS 1 The Movie Database Training Jens Christensen - Grit Academy - <a href="http://grit.jenschrchristensen.com/moviedatabasetraining">GitHub Repo</a></p>
   </footer>
-  </div>
   </div>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js" integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q" crossorigin="anonymous"></script>
 </body>
