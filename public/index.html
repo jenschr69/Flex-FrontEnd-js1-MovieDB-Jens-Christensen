@@ -56,21 +56,21 @@
 
   <main >
     <!-- Search field with two options: Search by movie title or by actor name -->
-    <form class="bg-stone-950 rounded-lg text-white font-medium text-xl p-3 mb-2 mx-auto" name="myForm">
-      <div class="col-md-3 d-inline-flex search-div mt-1 mr-1">
+    <form  class="bg-stone-950 rounded-lg font-medium text-xl pt-2 mb-2 inline-flex" name="myForm">
+      <div class="">
         <input class="form-control" type="text" id="search" name="search" placeholder="Search by movie or person">
       </div>
-      <div class="col-md-4 d-inline-flex search-div mt-1">
-        <select name="searchBy" id="searchBy" class="form-select col-4" title="searchBy">
+      <div class="">
+        <select name="searchBy" id="searchBy" class="form-select" title="searchBy">
           <option>Search by...</option>
           <option selected value="person">Person</option>
           <option value="movie">Movie</option>
         </select>
       </div>
-      <div class="col-md-2 d-inline-flex mt-1 mb-1 p-0 m-0">
+      <div class="d-inline-flex ">
         <button type="submit" id="submit" class="btn btn_search">Search</button>
       </div>
-      <div class="col-md-2 d-inline-flex mt-1 mb-1 p-0 m-0">
+      <div class="inline-flex">
         <button type="reset" class="btn btn_reset">Reset</button>
       </div>
     </form>
