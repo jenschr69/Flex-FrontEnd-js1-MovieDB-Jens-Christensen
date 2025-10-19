@@ -38,65 +38,105 @@ submitButton.addEventListener("click", (e) => {
 
 // This function is handling errors connecting to the api
 async function loadMovieAPI() {
-  // const url =`https://restcountries.com/v3.1/${searchType}/${searchPhrase}`; 
+  // Build TMDB search URL based on selected type (movie or person)
+  if (!searchType || !searchPhrase) return;
 
-const url = 'https://api.themoviedb.org/3/movie/100?language=en-US';
-const options = {
-  method: 'GET',
-  headers: {
-    accept: 'application/json',
-    Authorization: `Bearer ${BAERER_KEY}`
-  }
-};
+  const base = 'https://api.themoviedb.org/3/search';
+  const type = (searchType === 'person') ? 'person' : 'movie';
+  const url = `${base}/${type}?query=${encodeURIComponent(searchPhrase)}&include_adult=false&language=en-US&page=1`;
+
+  const options = {
+    method: 'GET',
+    headers: {
+      accept: 'application/json',
+      Authorization: `Bearer ${BAERER_KEY}`
+    }
+  };
 
   try {
-    const response = await fetch(url);
-    console.log(response.status);
+    const response = await fetch(url, options);
 
-    if (response.status >= 400) {
-        throw new Error(`HTTP error! status: ${response.status}`);
-    }
-
-    else if (response.status >= 500) {
-    throw new Error(`HTTP error! status: ${response.status}`);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
     }
 
     const result = await response.json();
-    displayMovies(result);
+    // TMDB returns an object with 'results' array for search endpoints
+    const items = Array.isArray(result.results) ? result.results : [];
+    // Limit to 10 items
+    const limited = items.slice(0, 10);
+    displayMovies(limited);
 
-    } catch (error) {
+  } catch (error) {
     const container = document.getElementById('error');
-    document.getElementById("error").style.display="block"
-    container.innerHTML=`<p style="color:red; padding-left:2rem;">No results found</p>`;
+    if (container) {
+      document.getElementById("error").style.display = "block";
+      container.innerHTML = `<p style="color:red; padding-left:2rem;">No results found or an error occurred</p>`;
+    }
+    console.error(error);
   }
 }
 
 // Displaying Countries
 const displayMovies = (movies) => {
-    let searchErrorMessage = '';
-    if (searchType == 'movie') {
-        searchErrorMessage = 'No movie found with that title...';
-    } 
-    else {
-        searchErrorMessage = 'Something went wrong...';
-    }
-    const container = document.getElementById('movies');
-    if(!Array.isArray(movies)) {container.innerHTML= searchErrorMessage; return }
+  let searchErrorMessage = '';
+  if (searchType == 'movie') {
+    searchErrorMessage = 'No movie found with that title...';
+  } else if (searchType == 'person') {
+    searchErrorMessage = 'No person found with that name...';
+  } else {
+    searchErrorMessage = 'Something went wrong...';
+  }
 
-    // Sort alfabeticly 
-    // movies.sort( (a,b) => a.population < b.population);
+  // Try multiple possible containers (project has different pages)
+  const container = document.getElementById('movies') || document.getElementById('movieSearchResult') || document.getElementById('displaySearchResults');
+  if (!container) {
+    console.warn('No container found for search results (expected #movies or #movieSearchResult).');
+    return;
+  }
 
-    // const moviesHTML = movies.map(movie => getMovie(movie));
+  if (!Array.isArray(movies) || movies.length === 0) {
+    container.innerHTML = `<p style="color:red;">${searchErrorMessage}</p>`;
+    return;
+  }
 
-    // Displaying div to html
-    container.innerHTML = moviesHTML.join(' ');
+  const moviesHTML = movies.map(item => getMovie(item));
+  // Displaying div to html
+  container.innerHTML = moviesHTML.join(' ');
 }
 
 // Get data and add it to html
-function getMovie  (movie) {
+function getMovie(movie) {
+  // Movie search returns objects with title, release_date, poster_path
+  // Person search returns objects with name, profile_path, known_for (array)
+  const imageBase = 'https://image.tmdb.org/t/p/w300';
+  if (movie.title || movie.original_title) {
+    const title = movie.title || movie.original_title || 'Untitled';
+    const date = movie.release_date ? `(${movie.release_date.slice(0,4)})` : '';
+    const poster = movie.poster_path ? `${imageBase}${movie.poster_path}` : '';
+    const overview = movie.overview ? `<p class="overview">${movie.overview}</p>` : '';
     return `
-        <div class="movie-div">
-            <!-- Add movie information here -->       
-        </div>
-    `
+      <div class="movie-div" style="width:300px;margin:8px;">
+        ${poster ? `<img class="movie_image" src="${poster}" alt="${title}">` : ''}
+        <h3 class="title">${title} ${date}</h3>
+        ${overview}
+      </div>
+    `;
+  }
+
+  if (movie.name) {
+    // person
+    const name = movie.name;
+    const profile = movie.profile_path ? `${imageBase}${movie.profile_path}` : '';
+    const knownForTitles = Array.isArray(movie.known_for) ? movie.known_for.map(k => k.title || k.name).filter(Boolean).slice(0,3).join(', ') : '';
+    return `
+      <div class="movie-div" style="width:300px;margin:8px;">
+        ${profile ? `<img class="movie_image" src="${profile}" alt="${name}">` : ''}
+        <h3 class="title">${name}</h3>
+        <p class="known-for">Known for: ${knownForTitles}</p>
+      </div>
+    `;
+  }
+
+  return `<div class="movie-div">Unknown item</div>`;
 }
