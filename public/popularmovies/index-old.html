@@ -10,37 +10,13 @@
   <link rel="icon" type="image/png" sizes="32x32" href="https://grit.jenschrchristensen.com/img/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="https://grit.jenschrchristensen.com/img/favicon-16x16.png">
   <link rel="manifest" href="https://grit.jenschrchristensen.com/img/site.webmanifest">
-  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
   <link rel="stylesheet" href="../css/styles.css">
-  <style type="text/tailwindcss">
-    #displaySearchResults {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-    }
-
-    .movies{
-      padding: 0.5rem 0rem 1rem 1rem;
-      margin: 1px auto;
-      gap: 20px;
-    }
-
-    .movie_image{
-        width: 300px;
-        height: 200px;
-    }
-
-    .title {
-      font-size: 1rem;
-      color: black
-    }
-  </style>
   <script src="../js/popularmovies.js" defer></script>
 </head>
 <body>
   <div class="container mx-auto">
-  <header class="bg-stone-950 rounded-lg text-white text-3xl p-3 mt-2 mb-2">
-   <h1><a class="text-white" href="../">The Movie Database - Popular Movies</a></h1>
+  <header>
+   <h1><a href="../">The Movie Database - Toprated Movies</a></h1>
   </header> 
   
   <nav class="bg-stone-950 rounded-lg font-medium text-xl pt-2 mb-2">
@@ -48,21 +24,21 @@
       <li><a class="text-white" href="../">Home</a></li>
       <li><a class="text-white" href="../actors/">Actors</a></li>
       <li><a class="text-white" href="../movies/">Movies</a></li>
-      <li><a class="text-white" href="../popularmovies/" aria-label="selected">Top 10 Popular Movies</a></li>
-      <li><a class="text-white" href="../topratedmovies/" >Top 10 Toprated Movies</a></li>
+      <li><a class="text-white" href="../popularmovies/">Top 10 Popular Movies</a></li>
+      <li><a class="text-white" href="../topratedmovies/" aria-label="selected">Top 10 Toprated Movies</a></li>
     </ul>
   </nav>
   
   <main>
-    <h1>Popular Movies</h1>
+    <h1>Trending Movies</h1>
     
-    <div id="displaySearchResults" class="flex">
+    <div id="movies">
 
     </div>
 
   </main>
-  <footer class="bg-stone-950 rounded-lg text-white p-3 mb-2">
-    <p>&copy; Flex Frontend JS 1 The Movie Database Training Jens Christensen - Grit Academy - <a class="text-white" href="https://github.com/jenschr69/Flex-FrontEnd-js1-MovieDB-Jens-Christensen">GitHub Repo</a></p>
+  <footer>
+    <p>&copy; Flex Frontend JS 1 The Movie Database Training Jens Christensen - Grit Academy - <a href="http://grit.jenschrchristensen.com/moviedatabasetraining">GitHub Repo</a></p>
   </footer>
   </div>
 </body>
