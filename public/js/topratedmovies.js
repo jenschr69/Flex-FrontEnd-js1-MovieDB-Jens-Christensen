@@ -38,11 +38,15 @@ function createMovieCard (media) {
 
     const movieCard = document.createElement("div");
     movieCard.classList.add("movie_item")
+    movieCard.classList.add("border-2")
+    movieCard.classList.add("rounded-lg")
+    movieCard.classList.add("m-2")
+    // movieCard.classList.add("rounded-lg") Not working - Why?
 
     movieCard.innerHTML = `
-    <img src="https://image.tmdb.org/t/p/w500${backdrop_path}" class="movie_image_rounded">
-    <div class="title"> ${title} </div>
-    <div class="title"> ${release_date} </div>    
+    <img src="https://image.tmdb.org/t/p/w200${backdrop_path}" class="">
+    <div class="text-lg"> ${title} </div>
+    <div class="text-sm">Release date: ${release_date} </div>    
    `;
    return movieCard;
 }

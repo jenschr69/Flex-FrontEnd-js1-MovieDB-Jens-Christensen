@@ -11,6 +11,7 @@
   <link rel="icon" type="image/png" sizes="16x16" href="https://grit.jenschrchristensen.com/img/favicon-16x16.png">
   <link rel="manifest" href="https://grit.jenschrchristensen.com/img/site.webmanifest">
   <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <link rel="stylesheet" href="../css/styles.css">
   <style type="text/tailwindcss">
     #displaySearchResults {
       display: flex;
@@ -42,8 +43,8 @@
    <h1><a class="text-white" href="../">The Movie Database - Toprated Movies</a></h1>
   </header> 
   
-  <nav class="bg-stone-950 rounded-lg font-medium text-xl p-3 mb-2">
-    <ul>
+  <nav class="bg-stone-950 rounded-lg font-medium text-xl pt-2 mb-2">
+    <ul class="inline-flex gap-3">
       <li><a class="text-white" href="../">Home</a></li>
       <li><a class="text-white" href="../actors/">Actors</a></li>
       <li><a class="text-white" href="../movies/">Movies</a></li>
@@ -55,7 +56,7 @@
   <main>
     <h1>Toprated Movies</h1>
     
-    <div id="displaySearchResults">
+    <div id="displaySearchResults" class="flex">
 
     </div>
 
