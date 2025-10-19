@@ -11,41 +11,65 @@
   <link rel="icon" type="image/png" sizes="16x16" href="https://grit.jenschrchristensen.com/img/favicon-16x16.png">
   <link rel="manifest" href="https://grit.jenschrchristensen.com/img/site.webmanifest">
   <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-  <style type="text/tailwindcss"></style>
-  <link rel="stylesheet" href="./css/styles.css">
+  <style type="text/tailwindcss">
+    #displaySearchResults {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .movies{
+      padding: 0.5rem 0rem 1rem 1rem;
+      margin: 1px auto;
+      gap: 20px;
+    }
+
+    .movie_image{
+        width: 300px;
+        height: 200px;
+    }
+
+    .title {
+      font-size: 1rem;
+      color: black
+    }
+  </style>
   <script src="./js/scripts.js" defer></script>
 </head>
 <body>
   <div class="container mx-auto">
-  <header>
+
+  <header class="bg-stone-950 rounded-lg text-white text-3xl p-3 mb-2">
    <h1><a href="../">The Movie Database</a></h1>
   </header> 
-
-  <nav class="navbar navbar-expand-sm">
-    <ul class="navbar-nav">
-      <li class="nav-item"><a class="nav-link" href="actors/">Actors</a></li>
-      <li class="nav-item"><a class="nav-link" href="movies/">Movies</a></li>
-      <li class="nav-item"><a class="nav-link" href="trending/">Trending</a></li>
+  
+  <nav class="bg-stone-950 rounded-lg text-white font-medium text-xl p-3 mb-2">
+    <ul>
+      <li><a href="../public/" aria-label="selected">Home</a></li>
+      <li><a href="../actors/">Actors</a></li>
+      <li><a href="../movies/">Movies</a></li>
+      <li><a href="../tvshows/">TV Shows</a></li>
     </ul>
   </nav>
 
   <main >
     <!-- Search field with two options: Search by movie title or by actor name -->
-    <form class="search_form mb-2 row mx-auto" name="myForm">
+    <form class="bg-stone-950 rounded-lg text-white font-medium text-xl p-3 mb-2 mx-auto" name="myForm">
       <div class="col-md-3 d-inline-flex search-div mt-1 mr-1">
-        <input class="form-control" type="text" id="search" name="search" placeholder="Search by movie or actor">
+        <input class="form-control" type="text" id="search" name="search" placeholder="Search by movie or person">
       </div>
       <div class="col-md-4 d-inline-flex search-div mt-1">
         <select name="searchBy" id="searchBy" class="form-select col-4" title="searchBy">
           <option>Search by...</option>
-          <option selected value="actor">Actor</option>
-          SEARCH URL: https://api.themoviedb.org/3/search/person?query=bruce%20willis&include_adult=false&language=en-US&page=1
-          https://api.themoviedb.org/3/search/person?query={ACTORNAME}&include_adult=false&language=en-US&page=1
-          person can be replaced by variable name searchtype - searchtype = person
+
           <option value="movie">Movie</option>
           SEARCH URL: https://api.themoviedb.org/3/search/movie?query=yellowstone&include_adult=false&language=en-US&page=1&api_key=00a75fcf5543152870c79be4d7953a39
           https://api.themoviedb.org/3/search/movie?query={MOVIENAME}&include_adult=false&language=en-US&page=1
           movie can be replaced by variable name searchtype - searchtype = movie
+                    <option selected value="person">Person</option>
+          SEARCH URL: https://api.themoviedb.org/3/search/person?query=bruce%20willis&include_adult=false&language=en-US&page=1
+          https://api.themoviedb.org/3/search/person?query={ACTORNAME}&include_adult=false&language=en-US&page=1
+          person can be replaced by variable name searchtype - searchtype = person
         </select>
       </div>
       <div class="col-md-2 d-inline-flex mt-1 mb-1 p-0 m-0">
@@ -78,11 +102,9 @@
     </div>
 
   </main>
-  <footer>
+  <footer class="bg-stone-950 rounded-lg text-white p-3 mb-2">
     <p>&copy; Flex Frontend JS 1 The Movie Database Training Jens Christensen - Grit Academy - <a href="http://grit.jenschrchristensen.com/moviedatabasetraining">GitHub Repo</a></p>
   </footer>
   </div>
-  </div>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js" integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q" crossorigin="anonymous"></script>
 </body>
 </html>
