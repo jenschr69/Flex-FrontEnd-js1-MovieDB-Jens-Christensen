@@ -62,8 +62,9 @@ async function loadMovieAPI() {
     // TMDB returns an object with 'results' array for search endpoints
     const items = Array.isArray(result.results) ? result.results : [];
     // Limit to 10 items
-    const limited = items.slice(0, 10);
-    displayMovies(limited);
+    // const limited = items.slice(0, 10);
+    // displayMovies(limited);
+    displayMovies(items);
 
   } catch (error) {
     const container = document.getElementById('error');
