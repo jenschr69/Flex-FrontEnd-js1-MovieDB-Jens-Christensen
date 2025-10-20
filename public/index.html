@@ -58,28 +58,28 @@
     <!-- Search field with two options: Search by movie title or by person name -->
     <form  class="bg-white rounded-lg shadow p-5 mb-6 flex flex-wrap gap-4 items-center" name="myForm">
       <div class="">
-        <input class="border border-gry-300 rounded px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" type="text" id="search" name="search" placeholder="Search by movie or person">
+        <input class="border border-gray-300 rounded px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" type="text" id="search" name="search" placeholder="Search by movie or person">
       </div>
       <div class="">
-        <select name="searchBy" id="searchBy" class="border border-gry-300 rounded px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" title="searchBy">
+        <select name="searchBy" id="searchBy" class="border border-gray-300 rounded px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" title="searchBy">
           <option>Search by...</option>
           <option selected value="person">Person</option>
           <option value="movie">Movie</option>
         </select>
       </div>
       <div class="inline-flex ">
-        <button type="submit" id="submit" class="bg-blue-600 text-white rounded px-4 py-2 hover:bg-blue-700 transition">Search</button>
+        <button type="submit" id="submit" class="bg-stone-950 text-white rounded px-4 py-2 hover:bg-stone-700 transition">Search</button>
       </div>
       <div class="inline-flex">
-        <button type="reset" class="btn btn_reset">Reset</button>
+        <button type="reset" class="border border-gray-300 rounded px-4 py-2 hover:bg-stone-300 transition">Reset</button>
       </div>
     </form>
 
-    <section id="emptySearchErrorMessage"></section>
-    <section id="error"></section>
+    <section id="emptySearchErrorMessage" class="border border-gray-300 rounded"></section>
+    <section id="error" class="border border-gray-300 rounded"></section>
 
     <!-- Search result-->
-    <section id="movieSearchResult" class="movie_search_result">
+    <section id="displaySearchResult" class="border border-gray-300 rounded">
       <h2 class="p-2">Search result</h2>
     </section>
 
