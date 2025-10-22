@@ -41,22 +41,22 @@
   <div class="container mx-auto">
 
   <header class="bg-stone-950 rounded-lg text-white text-3xl p-3 mt-2 mb-2">
-   <h1><a href="../">The Movie Database</a></h1>
+   <h1><a class="text-white" href="../">The Movie Database - Toprated Movies</a></h1>
   </header> 
   
-  <nav class="bg-stone-950 rounded-lg font-medium text-xl pt-2 mb-2">
+  <nav class="bg-stone-950 rounded-lg font-medium text-xl p-3 mb-2">
     <ul class="inline-flex gap-3">
-      <li><a class="text-white" href="../" aria-label="selected">Home</a></li>
+      <li><a class="text-white" href="/">Home</a></li>
       <li><a class="text-white" href="actors/">Actors</a></li>
       <li><a class="text-white" href="movies/">Movies</a></li>
       <li><a class="text-white" href="popularmovies/">Top 10 Popular Movies</a></li>
-      <li><a class="text-white" href="topratedmovies/">Top 10 Toprated Movies</a></li>
+      <li><a class="text-white" href="topratedmovies/" aria-label="selected">Top 10 Toprated Movies</a></li>
     </ul>
   </nav>
 
   <main >
     <!-- Search field with two options: Search by movie title or by person name -->
-    <form  class="bg-white rounded-lg shadow p-5 mb-6 flex flex-wrap gap-4 items-center" name="myForm">
+    <form  class="bg-white rounded-lg shadow p-3 mb-6 flex flex-wrap gap-4 items-center" name="myForm">
       <div class="">
         <input class="border border-gray-300 rounded px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" type="text" id="search" name="search" placeholder="Search by movie or person">
       </div>
@@ -75,12 +75,12 @@
       </div>
     </form>
 
-    <section id="emptySearchErrorMessage" class="border border-gray-300 rounded"></section>
-    <section id="error" class="border border-gray-300 rounded"></section>
+    <section id="emptySearchErrorMessage" class="border border-gray-300 rounded hidden">Null search</section>
+    <section id="error" class="border border-gray-300 rounded hidden">Search error</section>
 
     <!-- Search result-->
-    <section id="displaySearchResult" class="border border-gray-300 rounded">
-      <h2 class="p-2">Search results</h2>
+    <section id="displaySearchResult" class="border border-gray-300 rounded mb-5">
+      <h2 class="p-5 ">Search results</h2>
     </section>
 
   </main>
