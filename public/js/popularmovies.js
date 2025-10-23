@@ -3,7 +3,7 @@
 // API url: https://api.themoviedb.org/3/movie/popular
 
 let BAERER_KEY = "eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIwMGE3NWZjZjU1NDMxNTI4NzBjNzliZTRkNzk1M2EzOSIsIm5iZiI6MTc2MDA4MjIwOC40NCwic3ViIjoiNjhlOGI5MjBhNGQ0ZWFlNWU5NGE5YjQ0Iiwic2NvcGVzIjpbImFwaV9yZWFkIl0sInZlcnNpb24iOjF9.bVbZEk72a6panZkcwNMFNRNIQZh-b0nFIQMu6mcCHaI";
-const apiUrl= "https://api.themoviedb.org/3/movie/popular";
+const apiUrl= "https://api.themoviedb.org/3/movie/popular?page=1";
 const moviesContainer = document.getElementById("displaySearchResults");
 
 const myHeaders = new Headers();
@@ -19,7 +19,8 @@ async function loadmovie(params) {
   try {
   const response = await fetch(apiUrl, requestOptions);
   const data = await response.json();
-      data.results.forEach( media => {
+      const movies = data.results.splice(10, 10);
+      movies.forEach( media => {
         const movieCard = createMovieCard (media);
         moviesContainer.appendChild (movieCard);
     });
