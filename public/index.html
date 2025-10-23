@@ -56,21 +56,21 @@
 
   <main >
     <!-- Search field with two options: Search by movie title or by person name -->
-    <form  class="bg-white rounded-lg shadow p-3 mb-6 flex flex-wrap gap-4 items-center" name="myForm">
-      <div class="">
+    <form  class="bg-white rounded-lg shadow p-3 mb-6 flex flex-row flex-wrap gap-4 items-center" name="myForm">
+      <div class="basis-128">
         <input class="border border-gray-300 rounded px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" type="text" id="search" name="search" placeholder="Search by movie or person">
       </div>
-      <div class="">
+      <div class="basis-64">
         <select name="searchBy" id="searchBy" class="border border-gray-300 rounded px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" title="searchBy">
           <option>Search by...</option>
           <option selected value="person">Person</option>
           <option value="movie">Movie</option>
         </select>
       </div>
-      <div class="inline-flex ">
+      <div class="inline-flex basis-1/6">
         <button type="submit" id="submit" class="bg-stone-950 text-white rounded px-4 py-2 hover:bg-stone-700 transition">Search</button>
       </div>
-      <div class="inline-flex">
+      <div class="inline-flex basis-1/6">
         <button type="reset" class="border border-gray-300 rounded px-4 py-2 hover:bg-stone-300 transition">Reset</button>
       </div>
     </form>
