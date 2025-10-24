@@ -26,7 +26,7 @@ submitButton.addEventListener("click", (e) => {
     e.preventDefault()
     document.getElementById("emptySearchErrorMessage").style.display="none"
     document.getElementById("error").style.display="none"
-    document.getElementById("searchResult").style.display="block"
+    document.getElementById("displaySearchResult").style.display="block"
     const isvalid =  validateForm()
     console.log(isvalid);
     searchPhrase = document.getElementById("search").value
@@ -37,11 +37,12 @@ submitButton.addEventListener("click", (e) => {
 // This function is handling errors connecting to the api
 async function loadMovieAPI() {
   // Build TMDB search URL based on selected type (movie or person)
-  if (!searchType || !searchPhrase) return;
-
-  const base = 'https://api.themoviedb.org/3/search';
-  const type = (searchType === 'person') ? 'person' : 'movie';
-  const url = `${base}/${type}?query=${encodeURIComponent(searchPhrase)}&include_adult=false&language=en-US&page=1`;
+  if (!searchPhrase) return;
+  // https://developer.themoviedb.org/reference/search-multi
+  const base = 'https://api.themoviedb.org/3/search/multi';
+  /// const type = (searchType === 'person') ? 'person' :
+  //  'movie';
+  const url = `${base}?query=${encodeURIComponent(searchPhrase)}&include_adult=false&language=en-US&page=1`;
 
   const options = {
     method: 'GET',
@@ -64,7 +65,7 @@ async function loadMovieAPI() {
     // Limit to 10 items
     const limited = items.slice(0, 10);
     displayMovies(limited);
-
+    console.log(result);
   } catch (error) {
     const container = document.getElementById('error');
     if (container) {
