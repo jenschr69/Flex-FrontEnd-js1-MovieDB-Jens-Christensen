@@ -1,13 +1,10 @@
-// API - https://www.themoviedb.org/
+// API - https://www.themoviedb.org/ - API version 3
+// API url for person search: https://api.themoviedb.org/3/search/person
+// Documentation for search results for person: https://developer.themoviedb.org/reference/search-person
 
-// Search by person name - 
-// Search by movie name - 
-// Get all movies from current year
+searchPhrase ="", BAERER_KEY = "eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIwMGE3NWZjZjU1NDMxNTI4NzBjNzliZTRkNzk1M2EzOSIsIm5iZiI6MTc2MDA4MjIwOC40NCwic3ViIjoiNjhlOGI5MjBhNGQ0ZWFlNWU5NGE5YjQ0Iiwic2NvcGVzIjpbImFwaV9yZWFkIl0sInZlcnNpb24iOjF9.bVbZEk72a6panZkcwNMFNRNIQZh-b0nFIQMu6mcCHaI"
 
-let searchType ="" , searchPhrase ="", BAERER_KEY = "eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIwMGE3NWZjZjU1NDMxNTI4NzBjNzliZTRkNzk1M2EzOSIsIm5iZiI6MTc2MDA4MjIwOC40NCwic3ViIjoiNjhlOGI5MjBhNGQ0ZWFlNWU5NGE5YjQ0Iiwic2NvcGVzIjpbImFwaV9yZWFkIl0sInZlcnNpb24iOjF9.bVbZEk72a6panZkcwNMFNRNIQZh-b0nFIQMu6mcCHaI"
-
-// This function is displaying an error for both Actor and Movie - Empty search
-// Split so that separate error messages for actor name and movie title
+// This function is displaying an error for empty person search field
 function validateForm() {
     let x = document.forms["myForm"]["search"].value;
     if (x == "") {
@@ -36,9 +33,6 @@ submitButton.addEventListener("click", (e) => {
 
 // This function is handling errors connecting to the api
 async function loadPersonAPI() {
-  // Build TMDB search URL based on selected type (movie or person)
-  
-
   const base = 'https://api.themoviedb.org/3/search/person';
   
   const url = `${base}/?query=${encodeURIComponent(searchPhrase)}&include_adult=false&language=en-US&page=1`;

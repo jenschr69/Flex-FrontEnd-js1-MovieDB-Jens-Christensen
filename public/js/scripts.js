@@ -1,13 +1,10 @@
-// API - https://www.themoviedb.org/
+// API - https://www.themoviedb.org/ - API version 3
+// Documentation for search results for movies, person and tv-show: https://developer.themoviedb.org/reference/search-multi
+// API url for multi search: https://api.themoviedb.org/3/search/multi
 
-// Search by person name - 
-// Search by movie name - 
-// Get all movies from current year
+searchPhrase ="", BAERER_KEY = "eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIwMGE3NWZjZjU1NDMxNTI4NzBjNzliZTRkNzk1M2EzOSIsIm5iZiI6MTc2MDA4MjIwOC40NCwic3ViIjoiNjhlOGI5MjBhNGQ0ZWFlNWU5NGE5YjQ0Iiwic2NvcGVzIjpbImFwaV9yZWFkIl0sInZlcnNpb24iOjF9.bVbZEk72a6panZkcwNMFNRNIQZh-b0nFIQMu6mcCHaI"
 
-let searchType ="" , searchPhrase ="", BAERER_KEY = "eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIwMGE3NWZjZjU1NDMxNTI4NzBjNzliZTRkNzk1M2EzOSIsIm5iZiI6MTc2MDA4MjIwOC40NCwic3ViIjoiNjhlOGI5MjBhNGQ0ZWFlNWU5NGE5YjQ0Iiwic2NvcGVzIjpbImFwaV9yZWFkIl0sInZlcnNpb24iOjF9.bVbZEk72a6panZkcwNMFNRNIQZh-b0nFIQMu6mcCHaI"
-
-// This function is displaying an error for both Actor and Movie - Empty search
-// Split so that separate error messages for actor name and movie title
+// This function is displaying an error for an empty search field
 function validateForm() {
     let x = document.forms["myForm"]["search"].value;
     if (x == "") {
@@ -30,18 +27,14 @@ submitButton.addEventListener("click", (e) => {
     const isvalid =  validateForm()
     console.log(isvalid);
     searchPhrase = document.getElementById("search").value
-    searchType = document.getElementById("searchBy").value
-    if (isvalid) loadMovieAPI()
+    // searchType = document.getElementById("searchBy").value
+    if (isvalid) loadSearchAPI()
 })
 
 // This function is handling errors connecting to the api
-async function loadMovieAPI() {
-  // Build TMDB search URL based on selected type (movie or person)
+async function loadSearchAPI() {
   if (!searchPhrase) return;
-  // https://developer.themoviedb.org/reference/search-multi
   const base = 'https://api.themoviedb.org/3/search/multi';
-  /// const type = (searchType === 'person') ? 'person' :
-  //  'movie';
   const url = `${base}?query=${encodeURIComponent(searchPhrase)}&include_adult=false&language=en-US&page=1`;
 
   const options = {
@@ -62,9 +55,7 @@ async function loadMovieAPI() {
     const result = await response.json();
     // TMDB returns an object with 'results' array for search endpoints
     const items = Array.isArray(result.results) ? result.results : [];
-    // Limit to 10 items
-    const limited = items.slice(0, 10);
-    displayMovies(limited);
+    displaySearchResults(items);
     console.log(result);
   } catch (error) {
     const container = document.getElementById('error');
@@ -76,38 +67,34 @@ async function loadMovieAPI() {
   }
 }
 
-// Displaying Countries
-const displayMovies = (movies) => {
+// Displaying Search Results for Movies, Persons and TV-Shows
+const displaySearchResults = (searchResults) => {
   let searchErrorMessage = '';
   if (searchType == 'movie') {
     searchErrorMessage = 'No movie found with that title...';
-  } else if (searchType == 'person') {
-    searchErrorMessage = 'No person found with that name...';
-  } else {
-    searchErrorMessage = 'Something went wrong...';
-  }
+  } 
 
   // Try multiple possible containers (project has different pages)
-  const container = document.getElementById('movies') || document.getElementById('movieSearchResult') || document.getElementById('displaySearchResults');
+  const container = document.getElementById('searchResults') || document.getElementById('movieSearchResult') || document.getElementById('displaySearchResults');
   if (!container) {
     console.warn('No container found for search results (expected #movies or #movieSearchResult).');
     return;
   }
 
-  if (!Array.isArray(movies) || movies.length === 0) {
+  if (!Array.isArray(searchResults) || searchResults.length === 0) {
     container.innerHTML = `<p style="color:red;">${searchErrorMessage}</p>`;
     return;
   }
 
-  const moviesHTML = movies.map(item => getMovie(item));
+  const searchResultsHTML = searchResults.map(item => getSearchResult(item));
   // Displaying div to html
-  container.innerHTML = moviesHTML.join(' ');
+  container.innerHTML = searchResultsHTML.join(' ');
 }
 
 // Get data and add it to html
-function getMovie(movie) {
+function getSearchResult(searchResult) {
   // Movie search returns objects with title, release_date, poster_path
-  // Person search returns objects with name, profile_path, known_for (array)
+  // If searchResult is a movie, then display movie info
   const imageBase = 'https://image.tmdb.org/t/p/w300';
   if (movie.title || movie.original_title) {
     const title = movie.title || movie.original_title || 'Untitled';
@@ -138,4 +125,12 @@ function getMovie(movie) {
   }
 
   return `<div class="movie-div">Unknown item</div>`;
+
+  // Person search returns objects with name, profile_path, known_for (array)
+  // If searchResult is a person, then display person info
+
+  // TV show search returns objects with name, first_air_date, poster_path
+  // If searchResult is a TV show, then display TV show info
+  // Should TV shows be filtered out?
+
 }
