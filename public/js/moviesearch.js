@@ -41,7 +41,7 @@ submitButton.addEventListener("click", (e) => {
 
 // This function is handling errors connecting to the api
 async function loadMovieAPI() {
-  const url =`https://api.themoviedb.org/3/search/${searchType}/${searchPhrase}`;
+  const url =`https://api.themoviedb.org/3/search/movie/${searchPhrase}`;
   //const url =`https://restcountries.com/v3.1/${searchType}/${searchPhrase}`;
   try {
     const response = await fetch(url);
@@ -103,6 +103,3 @@ function getMovie (movie) {
         </div>
     `
 }
-
-// Constant for displaying a specific person
-// Function to display a specific person

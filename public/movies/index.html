@@ -3,14 +3,14 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Flex Frontend JS 1 The Movie Database - Jens Christensen - Grit Academy</title>
+  <title>Movie Search - The Movie Database</title>
   <link rel="icon" type="image/x-icon" href="https://grit.jenschrchristensen.com/img/favicon.ico">
   <link rel="apple-touch-icon" sizes="180x180" href="https://grit.jenschrchristensen.com/img/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="https://grit.jenschrchristensen.com/img/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="https://grit.jenschrchristensen.com/img/favicon-16x16.png">
   <link rel="manifest" href="https://grit.jenschrchristensen.com/img/site.webmanifest">
   <link rel="stylesheet" href="./css/styles.css">
-  <script src="./js/scripts.js" defer></script>
+  <script src="./js/moviesearch.js" defer></script>
 </head>
 <body>
   <div class="container mx-auto">
@@ -29,23 +29,9 @@
   </nav>
 
   <main >
-    <!-- Search field with two options: Search by movie title or by actor name -->
     <form class="search_form mb-2 row mx-auto" name="myForm">
       <div class="col-md-3 d-inline-flex search-div mt-1 mr-1">
-        <input class="form-control" type="text" id="search" name="search" placeholder="Search by movie or actor">
-      </div>
-      <div class="col-md-4 d-inline-flex search-div mt-1">
-        <select name="searchBy" id="searchBy" class="form-select col-4" title="searchBy">
-          <option>Search by...</option>
-          <option selected value="person">Person</option>
-          SEARCH URL: https://api.themoviedb.org/3/search/person?query=bruce%20willis&include_adult=false&language=en-US&page=1
-          https://api.themoviedb.org/3/search/person?query={ACTORNAME}&include_adult=false&language=en-US&page=1
-          person can be replaced by variable name searchtype - searchtype = person
-          <option value="movie">Movie</option>
-          SEARCH URL: https://api.themoviedb.org/3/search/movie?query=yellowstone&include_adult=false&language=en-US&page=1&api_key=00a75fcf5543152870c79be4d7953a39
-          https://api.themoviedb.org/3/search/movie?query={MOVIENAME}&include_adult=false&language=en-US&page=1
-          movie can be replaced by variable name searchtype - searchtype = movie
-        </select>
+        <input class="form-control" type="text" id="search" name="search" placeholder="Search by movie title">
       </div>
       <div class="col-md-2 d-inline-flex mt-1 mb-1 p-0 m-0">
         <button type="submit" id="submit" class="btn btn_search">Search</button>
