@@ -11,7 +11,7 @@ BAERER_KEY = "eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIwMGE3NWZjZjU1NDMxNTI4NzBjNzliZTRkN
 // Constant for displaying a specific movie
 // Function to display a specific movie
 
-// This function is displaying an error for both Movie and Person - Empty search
+// This function is displaying an error for both Movie and Person - Empty search - 2.november: This is working
 function validateForm() {
     let x = document.forms["myForm"]["search"].value;
     if (x == "") {
@@ -31,8 +31,8 @@ submitButton.addEventListener("click", (e) => {
     e.preventDefault()
     document.getElementById("emptySearchErrorMessage").style.display="none"
     document.getElementById("error").style.display="none"
-    document.getElementById("searchResult").style.display="block"
-    const isvalid =  validateForm()
+    document.getElementById("displaySearchResult").style.display="block"
+    const isvalid = validateForm()
     console.log(isvalid);
     searchPhrase = document.getElementById("search").value
     searchType = document.getElementById("searchBy").value
@@ -75,10 +75,6 @@ const displayMovies = (movies) => {
     }
     const container = document.getElementById('movies');
     if(!Array.isArray(movies)) {container.innerHTML= searchErrorMessage; return }
-
-    // Sort by population - Decending
-    // countries.sort( (a,b) => a.population < b.population);
-
     // const moviesHTML = countries.map(movie => getMovie(movie));
 
     // Displaying div to html
