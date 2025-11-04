@@ -1,0 +1,140 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+h2 {
+  font-size: 2rem;
+}
+
+h4 {
+  font-size: 1.2rem;
+}
+
+body {
+  font-family: 'Roboto', sans-serif;
+  background-color: #eee;
+  padding: 1rem;
+}
+
+.container {
+  background-color: #eee;
+}
+
+header {
+  background-color: black;
+  color: #eee;
+  padding: 0.4rem 1rem 0.2rem 1rem;
+  margin-bottom: 0.5rem;
+  a, :hover, :visited {
+    color: #eee;
+    text-decoration: none;
+  }
+  border-radius: 15px;
+}
+
+/* Styling of search forms */
+
+input, select {
+ margin-bottom: 0.3rem;
+}
+
+.search_form {
+  padding-left: 0rem;
+  padding-right: 5px;
+}
+
+.search-div {
+  padding: 0;
+  margin-right: 1rem;
+}
+
+.btn_search {
+  color:whitesmoke;
+  font-weight: 700;
+  background-color: black;
+  border: 1px solid whitesmoke;
+  border-radius: 15px !important;
+  width: 80%;
+  padding-left: 1rem;
+}
+
+.btn_search:hover {
+    color:whitesmoke;
+    font-weight: 700;
+    background-color: black;
+    border: 1px solid whitesmoke;
+    border-radius: 15px !important;
+    width: 82%;
+    padding-left: 1rem;
+}
+
+.btn_reset {
+  color:black;
+  font-weight: 700;
+  background-color: whitesmoke;
+  border: 1px solid black;
+  border-radius: 15px !important;
+  width: 80%;
+  padding-left: 1rem;
+}
+
+.btn_reset:hover {
+  color:black;
+  font-weight: 700;
+  background-color: silver;
+  border: 1px solid black;
+  border-radius: 15px !important;
+  width: 82%;
+  padding-left: 1rem;
+}
+
+/* Styling of search results */
+#searchResult {
+  display: none;
+  background-color: lightgrey;
+}
+
+.search_result {
+  border-radius: 15px;
+  padding-left: 1rem;
+}
+
+#error {
+  display: none;
+}
+
+.countries{
+    padding: 0.5rem 0rem 1rem 1rem;
+    margin: 1px auto;
+    gap: 20px;
+}
+.country-div{
+    width: 300px;
+    background: #eee;
+    border: 1px solid black;
+    padding: 1rem;
+}
+img{
+    width: 100%;
+    height: 150px;
+}
+
+footer {
+  background-color: black;
+  p {
+    color: #eee;
+  }
+  a, :hover, :visited {
+    color: #eee;
+  }
+  padding: 1rem 1rem 0.2rem 1rem;
+  border-radius: 15px;
+}
+
+@media screen and (max-width: 576px){
+    .countries{
+        grid-template-columns: repeat(1, 1fr);
+    }
+}
