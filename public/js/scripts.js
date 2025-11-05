@@ -54,10 +54,10 @@ async function loadMovieAPI() {
     throw new Error(`HTTP error! status: ${response.status}`);
     }
     const result = await response.json();
-    displayMovies(result);
+    displaySearchResult(result);
     } catch (error) {
-    const container = document.getElementById('error');
-    document.getElementById("error").style.display="block"
+    const container = document.getElementById('searchError');
+    document.getElementById("searchError").style.display="block"
     container.innerHTML=`<p style="color:red; padding-left:2rem;">No movies found</p>`;
   }
 }

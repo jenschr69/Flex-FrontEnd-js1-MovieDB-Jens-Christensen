@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Flex Frontend JS 1 The Movie Database - Jens Christensen - Grit Academy</title>
+  <link rel="icon" type="image/x-icon" href="https://grit.jenschrchristensen.com/img/favicon.ico">
+  <link rel="apple-touch-icon" sizes="180x180" href="https://grit.jenschrchristensen.com/img/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="https://grit.jenschrchristensen.com/img/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="https://grit.jenschrchristensen.com/img/favicon-16x16.png">
+  <link rel="manifest" href="https://grit.jenschrchristensen.com/img/site.webmanifest">
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <link rel="stylesheet" href="../css/styles.css">
+  <script src="../js/movies.js" defer></script>
+</head>
+<body>
+  <div class="container mx-auto">
+  <header class="bg-stone-950 rounded-lg text-white text-3xl p-3 mt-2 mb-2">
+   <h1><a class="text-white" href="../">The Movie Database - Toprated Movies</a></h1>
+  </header> 
+  
+  <nav class="bg-stone-950 rounded-lg font-medium text-xl p-3 mb-2">
+    <ul class="inline-flex gap-3">
+      <li><a class="text-white" href="../">Home</a></li>
+      <li><a class="text-white" href="../popularmovies/">Top 10 Popular Movies</a></li>
+      <li><a class="text-white" href="../topratedmovies/" aria-label="selected">Top 10 Toprated Movies</a></li>
+    </ul>
+  </nav>
+  
+  <main>
+    <h1>Moviesearch</h1>
+    
+    <div id="displaySearchResults" class="flex">
+
+    </div>
+
+  </main>
+  <footer class="bg-stone-950 rounded-lg text-white p-3 mb-2">
+    <p>&copy; Flex Frontend JS 1 The Movie Database Jens Christensen - Grit Academy - <a class="text-white" href="https://github.com/jenschr69/Flex-FrontEnd-js1-MovieDB-Jens-Christensen">GitHub Repo</a></p>
+  </footer>
+  </div>
+</body>
+</html>
