@@ -44,11 +44,11 @@ submitButton.addEventListener("click", (e) => {
     console.log(isvalid);
     searchPhrase = document.getElementById("search").value
     searchType = document.getElementById("searchBy").value
-    if (isvalid) loadMovieAPI()
+    if (isvalid) loadMovieSearchAPI()
 })
 
 // This function is handling errors connecting to the api
-async function loadMovieAPI() {
+async function loadMovieSearchAPI() {
   // const url =`https://api.themoviedb.org/3/search/${searchType}/${searchPhrase}`;
   const url = `https://api.themoviedb.org/3/search/movie?include_adult=false&language=en-US&page=1&query={searchPhrase}`;
   try {
