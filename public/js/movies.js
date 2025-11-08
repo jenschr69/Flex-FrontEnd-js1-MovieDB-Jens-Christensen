@@ -1,5 +1,5 @@
 // API - https://www.themoviedb.org/ - API version 3
-// Developer documentation: https://developer.themoviedb.org/reference/movie-top-rated-list
+// Developer documentation: https://developer.themoviedb.org/reference/search-movie
 // API URL Movie search: https://api.themoviedb.org/3/search/movie?include_adult=false&language=en-US&page=1&api_key={api_key}&query={searchPhrase}
 // Should I use this one instead witout API key: https://api.themoviedb.org/3/search/movie?include_adult=false&language=en-US&page=1&query={searchPhrase}
 // Goal: Dispalying search results for text base search on movie titles - Display only results from page = 1
