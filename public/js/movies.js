@@ -6,9 +6,9 @@
 
 let BAERER_KEY = "eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIwMGE3NWZjZjU1NDMxNTI4NzBjNzliZTRkNzk1M2EzOSIsIm5iZiI6MTc2MDA4MjIwOC40NCwic3ViIjoiNjhlOGI5MjBhNGQ0ZWFlNWU5NGE5YjQ0Iiwic2NvcGVzIjpbImFwaV9yZWFkIl0sInZlcnNpb24iOjF9.bVbZEk72a6panZkcwNMFNRNIQZh-b0nFIQMu6mcCHaI";
 let apiKey = "00a75fcf5543152870c79be4d7953a39";
-// API url for movie search: 
+
 const apiUrl= "https://api.themoviedb.org/3/search/movie?include_adult=false&language=en-US&page=1&query={searchPhrase}";
-const moviesContainer = document.getElementById("displaySearchResults");
+const searchResultContainer = document.getElementById("displaySearchResults");
 
 const myHeaders = new Headers();
 myHeaders.append("Authorization", "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIwMGE3NWZjZjU1NDMxNTI4NzBjNzliZTRkNzk1M2EzOSIsIm5iZiI6MTc2MDA4MjIwOC40NCwic3ViIjoiNjhlOGI5MjBhNGQ0ZWFlNWU5NGE5YjQ0Iiwic2NvcGVzIjpbImFwaV9yZWFkIl0sInZlcnNpb24iOjF9.bVbZEk72a6panZkcwNMFNRNIQZh-b0nFIQMu6mcCHaI");
@@ -44,12 +44,11 @@ submitButton.addEventListener("click", (e) => {
     console.log(isvalid);
     searchPhrase = document.getElementById("search").value
     searchType = document.getElementById("searchBy").value
-    if (isvalid) loadMovieSearchAPI()
+    if (isvalid) loadSearchResultAPI()
 })
 
 // This function is handling errors connecting to the api
-async function loadMovieSearchAPI() {
-  // const url =`https://api.themoviedb.org/3/search/${searchType}/${searchPhrase}`;
+async function loadSearchResultAPI() {
   const url = `https://api.themoviedb.org/3/search/movie?include_adult=false&language=en-US&page=1&query={searchPhrase}`;
   try {
     const response = await fetch(url);
@@ -66,19 +65,18 @@ async function loadMovieSearchAPI() {
     } catch (error) {
     const container = document.getElementById('searchError');
     document.getElementById("searchError").style.display="block"
-    container.innerHTML=`<p style="color:red; padding-left:2rem;">No movies found</p>`;
+    container.innerHTML=`<p style="color:red; padding-left:2rem;">No search result found</p>`;
   }
 }
 
-async function loadmovie(params) {
+async function loadSearchResult(params) {
   try {
   const response = await fetch(apiUrl, requestOptions);
 
   const data = await response.json();
-    const movies = data.results.splice(10, 10);
-      movies.forEach( media => {
-        const movieCard = createMovieCard (media);
-        moviesContainer.appendChild (movieCard);
+      searchResults.forEach( media => {
+        const searchResultCard = createSearchResultCard (media);
+        searchResultsCardContainer.appendChild (searchResultCard);
     });
     console.log(data)
     } 
@@ -87,8 +85,8 @@ async function loadmovie(params) {
     }
   }
 
-  // Displaying Movies
-  const displayMovies = (movies) => {
+  // Displaying Movies and persons search results
+  const displaySearchResults = (searchResults) => {
     let searchErrorMessage = '';
     if (searchType == 'movie') {
         searchErrorMessage = 'No movie found with that name...';
@@ -98,17 +96,17 @@ async function loadmovie(params) {
     else {
         searchErrorMessage = 'Something went wrong...';
     }
-    const container = document.getElementById('movies');
-    if(!Array.isArray(movies)) {container.innerHTML= searchErrorMessage; return }
+    const container = document.getElementById('searchResults');
+    if(!Array.isArray(searchResults)) {container.innerHTML= searchErrorMessage; return }
     // const moviesHTML = countries.map(movie => getMovie(movie));
 
     // Displaying div to html
-    container.innerHTML = moviesHTML.join(' ');
+    container.innerHTML = searchResultsHTML.join(' ');
 }
 
-function getMovie (movie) {
+function getSearchResults (searchResult) {
     return `
-        <div class="movie-div">
+        <div class="search-result-div">
         <img src="${movie.poster_path}">
         <h2>${movie.title}</h2>
         <h4>Release date: ${movie.release_date}</h4>
@@ -117,24 +115,24 @@ function getMovie (movie) {
     `
 }
 
-function createMovieCard (media) {
+function createSearchResultCard (media) {
     const { title, backdrop_path, release_date } = media;
 
-    const movieCard = document.createElement("div");
-    movieCard.classList.add("movie_item")
-    movieCard.classList.add("border-2")
-    movieCard.classList.add("rounded-lg")
-    movieCard.classList.add("m-2")
+    const searchResultCard = document.createElement("div");
+    searchResultCard.classList.add("movie_item")
+    searchResultCard.classList.add("border-2")
+    searchResultCard.classList.add("rounded-lg")
+    searchResultCard.classList.add("m-2")
     // movieCard.classList.add("rounded-lg") Not working - Why?
 
-    movieCard.innerHTML = `
+    searchResultCard.innerHTML = `
     <img src="https://image.tmdb.org/t/p/w300${backdrop_path}" class="">
     <div class="pl-2 text-lg"> ${title} </div>
     <div class="pl-2 text-sm">Release date: ${release_date} </div>    
    `;
-   return movieCard;
+   return searchResultCard;
 }
 
-loadmovie();
+loadSearchResult();
 
 
