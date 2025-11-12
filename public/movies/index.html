@@ -28,11 +28,35 @@
   </nav>
   
   <main>
-    <h1>Moviesearch</h1>
-    
-    <div id="displaySearchResults" class="flex">
+  <main >
+    <!-- Search field with two options: Search by movie title or by person name -->
+    <form  class="bg-white rounded-lg shadow p-3 mb-6 flex flex-row flex-wrap gap-8 items-center" name="myForm">
+      <div class=" border border-gray-300 rounded px-8 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500w-2xl">
+        <input class="" type="text" id="search" name="search" placeholder="Search for a movie by title">
+      </div>
+      <!-- <div class="border border-gray-300 rounded px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500">
+        <select name="searchBy" id="searchBy"  title="searchBy">
+          <option>Search by...</option>
+          <option selected value="movie">Movie</option>
+          <option value="person">Person</option>
+        </select>
+      </div> -->
+      <div class="">
+        <button type="submit" id="submit" class="bg-stone-950 text-white rounded px-4 py-2 hover:bg-stone-700 transition">Search</button>
+      </div>
+      <div class="">
+        <button type="reset" class="border border-gray-300 rounded px-4 py-2 hover:bg-stone-300 transition">Reset</button>
+      </div>
+    </form>
 
-    </div>
+    <section id="emptySearchErrorMessage" class="border border-gray-300 rounded hidden mb-2">Null search</section>
+
+    <section id="error" class="border border-gray-300 rounded hidden mb-2">Search error</section>
+
+    <!-- Search result-->
+    <section id="displaySearchResult" class="border border-gray-300 rounded mb-5">
+      <h2 class="p-5 ">Search results</h2>
+    </section>
 
   </main>
   <footer class="bg-stone-950 rounded-lg text-white p-3 mb-2">
